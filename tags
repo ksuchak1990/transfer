@@ -1,0 +1,48 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/3fdf28bc/
+Agent-Based Modelling	sections/lit_review.tex	/^\\subsection{Agent-Based Modelling}\\label{sub:abms}$/;"	u	section:Literature Review
+Aims and Objectives	sections/introduction.tex	/^\\subsection{Aims and Objectives}\\label{sub:intro:aims}$/;"	u	section:Introduction
+Application of Data Assimilation to Agent-Based Models	sections/lit_review.tex	/^\\subsection[Application of Data Assimilation to Agent-Based Models]{Application of Sequential D/;"	u	section:Literature Review
+Code Documentation	appendices/code_docs.tex	/^\\section{Code Documentation}\\label{sec:cod_docs}$/;"	s
+Data Assimilation	sections/lit_review.tex	/^\\subsection{Data Assimilation}\\label{sub:lit_rev:da}$/;"	u	section:Literature Review
+Derivation of Ensemble Kalman Filter	appendices/enkf_derivation.tex	/^\\section{Derivation of Ensemble Kalman Filter}\\label{sec:enkf_derivation}$/;"	s
+Ensemble Kalman Filter	sections/method.tex	/^\\subsection{Ensemble Kalman Filter}\\label{sub:method:enkf}$/;"	u	section:Method
+Experimental Setup	sections/method.tex	/^\\subsection{Experimental Setup}\\label{sub:method:experiments}$/;"	u	section:Method
+Introduction	sections/introduction.tex	/^\\section{Introduction}\\label{sec:intro}$/;"	s
+Kalman Filter	sections/method.tex	/^\\subsection{Kalman Filter}\\label{sub:method:kf}$/;"	u	section:Method
+Kalman Filter-based Approaches	sections/lit_review.tex	/^\\subsubsection{Kalman Filter-based Approaches}\\label{subs:lit_rev:da_abm:kf}$/;"	b	subsection:Literature Review""Application of Data Assimilation to Agent-Based Models
+Literature Review	sections/lit_review.tex	/^\\section{Literature Review}\\label{sec:lit_rev}$/;"	s
+Method	sections/method.tex	/^\\section{Method}\\label{sec:method}$/;"	s
+Model	sections/method.tex	/^\\subsection{Model}\\label{sub:method:model}$/;"	u	section:Method
+Particle Filter-based Approaches	sections/lit_review.tex	/^\\subsubsection{Particle Filter-based Approaches}\\label{subs:lit_rev:da_abm:pf}$/;"	b	subsection:Literature Review""Application of Data Assimilation to Agent-Based Models
+Research Timetable	sections/timetable.tex	/^\\section{Research Timetable}\\label{sec:timetable}$/;"	s
+Results	sections/results.tex	/^\\section{Results}\\label{sec:results}$/;"	s
+Summary	sections/lit_review.tex	/^\\subsection{Summary}\\label{sub:lit_rev:summary}$/;"	u	section:Literature Review
+Training Plan Review	sections/training.tex	/^\\section{Training Plan Review}\\label{sec:training}$/;"	s
+sec:cod_docs	appendices/code_docs.tex	/^\\section{Code Documentation}\\label{sec:cod_docs}$/;"	l
+sec:enkf_derivation	appendices/enkf_derivation.tex	/^\\section{Derivation of Ensemble Kalman Filter}\\label{sec:enkf_derivation}$/;"	l
+sec:intro	sections/introduction.tex	/^\\section{Introduction}\\label{sec:intro}$/;"	l
+sec:lit_rev	sections/lit_review.tex	/^\\section{Literature Review}\\label{sec:lit_rev}$/;"	l
+sec:method	sections/method.tex	/^\\section{Method}\\label{sec:method}$/;"	l
+sec:results	sections/results.tex	/^\\section{Results}\\label{sec:results}$/;"	l
+sec:timetable	sections/timetable.tex	/^\\section{Research Timetable}\\label{sec:timetable}$/;"	l
+sec:training	sections/training.tex	/^\\section{Training Plan Review}\\label{sec:training}$/;"	l
+sub:abms	sections/lit_review.tex	/^\\subsection{Agent-Based Modelling}\\label{sub:abms}$/;"	l
+sub:intro:aims	sections/introduction.tex	/^\\subsection{Aims and Objectives}\\label{sub:intro:aims}$/;"	l
+sub:lit_rev:da	sections/lit_review.tex	/^\\subsection{Data Assimilation}\\label{sub:lit_rev:da}$/;"	l
+sub:lit_rev:da_abm	sections/lit_review.tex	/^Models}\\label{sub:lit_rev:da_abm}$/;"	l
+sub:lit_rev:summary	sections/lit_review.tex	/^\\subsection{Summary}\\label{sub:lit_rev:summary}$/;"	l
+sub:method:enkf	sections/method.tex	/^\\subsection{Ensemble Kalman Filter}\\label{sub:method:enkf}$/;"	l
+sub:method:experiments	sections/method.tex	/^\\subsection{Experimental Setup}\\label{sub:method:experiments}$/;"	l
+sub:method:kf	sections/method.tex	/^\\subsection{Kalman Filter}\\label{sub:method:kf}$/;"	l
+sub:method:model	sections/method.tex	/^\\subsection{Model}\\label{sub:method:model}$/;"	l
+subs:lit_rev:da_abm:kf	sections/lit_review.tex	/^\\subsubsection{Kalman Filter-based Approaches}\\label{subs:lit_rev:da_abm:kf}$/;"	l
+subs:lit_rev:da_abm:pf	sections/lit_review.tex	/^\\subsubsection{Particle Filter-based Approaches}\\label{subs:lit_rev:da_abm:pf}$/;"	l
+tab:filter_params	sections/method.tex	/^    \\caption{Table of filter parameters for experiment.}\\label{tab:filter_params}$/;"	l
+tab:model_params	sections/method.tex	/^    \\caption{Table of model parameters for experiment.}\\label{tab:model_params}$/;"	l
+transfer	README.md	/^# transfer$/;"	c
