@@ -1,15 +1,18 @@
 \section{Literature Review}\label{sec:lit_rev}
 
 \begin{itemize}
-    \item Introduction to agent-based modelling
+    %\item Introduction to agent-based modelling
     \item Review of methods for real-time model updating
     \begin{itemize}
         \item Data assimilation
         \item Others
     \end{itemize}
+    \item Talk about application to cellular automata too.
+    \item Whereas agent-based models focus on agents as the discrete indivisible
+        units, cellular automata focus on space as the units.
 \end{itemize}
 
-As touched upon in Chapter \ref{sec:intro}, the process of developing an
+As touched upon in Section \ref{sec:intro}, the process of developing an
 agent-based model typically involves some form of model calibration.
 Model calibration is the procedure of fine-tuning the model that we are using
 such that it best fits the particular situation that we are seeking to model
@@ -30,9 +33,92 @@ and restart the model.
 We therefore seek an approach that allows us to incorporate observations of the
 system whilst simulating the system --- data assimilation.
 
-This Chapter will therefore seek to provide a basic overview of data
-assimilation, along with some coverage of the attempts that have been made to
-implement such techniques to agent-based models that simulate urban systems.
+As shall be seen, the application of data assimilation techniques to agent-based
+models has been relatively limited --- this section seeks to review the existing
+literature regarding such application.
+Given the limited nature of such literature, some attention will also be given
+to the application of data assimilation methods to the related modelling
+technique of cellular automata.
+Consequently, the section shall proceed as follows:
+\begin{itemize}
+    \item An introductory review of agent-based modelling, and its relation to
+        cellular automata.
+    \item A basic overview of data assimilation.
+    \item A review of the attempts that have been made to implement data
+        assimilation techniques to agent-based models and cellular automata.
+\end{itemize}
+
+\subsection{Agent-Based Modelling}\label{sub:abms}
+
+Agent-based models (sometimes referred to as individual-based models), have
+become widely used in a range of fields including social systems (e.g.\ the
+modelling of pedestrian movements \citep{liu2014agent}), systems pharmacology
+(e.g.\ the evolution cellular systems and the impact of different intervention
+measures \citep{cosgrove2015agent}), and ecological systems (e.g.\ the simulation
+of habitat-selection in fish populations \citep{railsback2002analysis}).
+Whilst there have existed a number of other other modelling techniques prior to
+the introduction of agent-based models, many of them took the form of
+differential equation-based models \citep{parunak1998agent}.
+Such equation-based models seek to describe the behaviour of systems at an
+aggregate level, often assuming some level of homogeneity in the population. 
+Agent-based models, on the other hand, seek to describe the behaviour of the
+individuals in the system, allowing the emergence of aggregate behaviour from
+their interactions.
+
+In agent-based models, individuals are characterised as discrete autonomous
+agents in the model which can interact with each other, as well as with their
+surrounding environment \citep{bonabeau2002agent}.
+Such a characterisation involves the model containing information for each agent
+regarding their attributes and the rules by which they evolve.
+The rules pertaining to agent interaction aim to mirror the way in which we
+observe interactions occurring in reality; real interactions often occur with
+some level of variability and so the evaluation of the respective agent rules
+often involve some level of randomness.
+A model is therefore run by iterating forward through time, evaluating agent
+interaction rules at each time-step.
+
+The advantage of such an approach (and indeed other simulation approaches) when
+considering the research field of pedestrian movement is that it allows for the
+testing of scenarios that might not be possible in the physical setting of
+reality, may be invasive or may be expensive.
+Beyond this, the benefit of using agent-based modelling techniques over
+equation-based methods is that they provide information to researchers regarding
+behaviour at an individual level, as well as the derived aggregate system
+behaviour.
+
+The agent-based modelling approach is not, however, without its disadvantages.
+One of the most obvious of these is the computational cost of running such a
+model; as the scale of model increases (both in terms of the scale of the
+environment and the number of agents), so do the required computational
+resources \citep{bonabeau2002agent}.
+Furthermore, the stochastic nature of these models typically means that they
+must be run repeatedly with a given set of model parameters in order to deduce
+consistent system behaviour, further increasing computational cost.
+Such issues may be tackled through the use of supercomputing clusters and
+parallelisation techniques.
+
+A further disadvantage is that such a modelling technique requires a
+fine-grained description of individual behaviour.
+This is particularly challenging when considering human social systems which can
+incorporate a range of complex competing motivations.
+Failure to correctly capture the underlying agent behaviours can result in
+spurious behaviours that do not match those observed in the real system
+\citep{couclelis2002modeling}.
+
+\subsection*{Cellular Automata}\label{sub:lit_rev:ca}
+
+Much like agent-based models, cellular automata are a simulation method which
+focus on prescribing behavioural rules at a microscopic scale and allowing the
+emergence of macroscopic behaviour.
+The two approaches differ, however, in that whilst agent-based models focus on
+agents as the discrete indivisible units, cellular automata focus on space as
+the units.
+In such a model, the environment is divided up into a collection of spatial
+cells, each of which has its own set of properties.
+As the model is iterated forward through time, the cell properties are then
+updated based on rules which typically rely on the properties of a cell's
+neighbours.
+Cellular automata are often implemented in research concerning land use.
 
 \subsection{Data Assimilation}\label{sub:lit_rev:da}
 
