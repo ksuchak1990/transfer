@@ -105,21 +105,6 @@ Failure to correctly capture the underlying agent behaviours can result in
 spurious behaviours that do not match those observed in the real system
 \citep{couclelis2002modeling}.
 
-\subsection*{Cellular Automata}\label{sub:lit_rev:ca}
-
-Much like agent-based models, cellular automata are a simulation method which
-focus on prescribing behavioural rules at a microscopic scale and allowing the
-emergence of macroscopic behaviour.
-The two approaches differ, however, in that whilst agent-based models focus on
-agents as the discrete indivisible units, cellular automata focus on space as
-the units.
-In such a model, the environment is divided up into a collection of spatial
-cells, each of which has its own set of properties.
-As the model is iterated forward through time, the cell properties are then
-updated based on rules which typically rely on the properties of a cell's
-neighbours.
-Cellular automata are often implemented in research concerning land use.
-
 \subsection{Data Assimilation}\label{sub:lit_rev:da}
 
 %\begin{itemize}
@@ -341,45 +326,7 @@ The first of these was undertaken by \citet{rai2013behavior} and aimed to add a
 further layer by estimating behavioural patterns in the system.
 This was achieved using a hidden Markov model which was trained on the
 historical data of the system.
-The information encoded in the hidden Markov model is incorporated into the
-particle filter at the sampling step; the hidden Markov model is first used to
-identify the types of behaviour being exhibited by the system and particles then
-sample from different types, subsequently engaging the simulation with said
-behaviour.
-The remaining steps of the filtering process remained the same.
-The aim of applying this approach was to further improve the accuracy of
-simulations through the identification of pedestrian behaviours.
-In order to do so, the behaviours were divided into the following categories:
-\begin{itemize}
-    \item \textbf{Outside}: All agents wait outside of a conference room.
-    \item \textbf{In Conference}: All agents are attending meeting in the
-        conference room.
-    \item \textbf{Few Entering}: A small number of agents entering the
-        conference room.
-    \item \textbf{High Entering}: A large number of agents entering the
-        conference room.
-    \item \textbf{Few Leaving}: A small number of agent leaving the conference
-        room.
-    \item \textbf{High Leaving}: A large number of agent leaving the conference
-        room.
-\end{itemize}
-These categorisations, particularly the \textit{entering} and \textit{leaving}
-states, present a problem.
-When entering the conference room, agents are more likely to be categorised
-into three groups --- early few entering, high entering and late few entering
---- this re-categorisation helps to describe the status of the agents that are
-not in the process of entering:
-\begin{itemize}
-    \item \textbf{Early few entering}: A small number of agents entering the
-        conference room early before a meeting, with the other agents outside
-        the conference room.
-    \item \textbf{High entering}: A large number of agents entering the
-        conference room.
-    \item \textbf{Late few entering}: A small number of agents entering the
-        conference room late after the meeting has started, with the other
-        agents inside the conference room.
-\end{itemize}
-The investigation then attempts to determine the accuracy with which the model
+The investigation attempts to determine the accuracy with which the model
 is able to identify the correct behaviour for agents, with accuracy being
 defined as
 \begin{equation}
@@ -389,7 +336,7 @@ where $T$ is taken to be the total number of simulation steps and $S$ is the
 behaviour pattern state.
 It is unclear, however, how this calculation is undertaken given that the
 behavioural states are categories and not numerical; furthermore, the meaning
-behind the state notation is explained --- it appears that $k$ is a time-step
+behind the state notation is note explained --- it appears that $k$ is a time-step
 index, however it does not make sense to compare the behavioural state at each
 time state to a static ``real'' behavioural state and the latter would likely be
 a transient property.
@@ -416,11 +363,12 @@ assimilation process would also result in a further increase in the
 computational cost.
 
 The second of the investigations to develop on the initial work by
-\citet{wang2013data} was undertaken by \citet{wang2015data}, this time making
-use of three different resampling schemes: standard resampling (as seen in the
-original investigation), component set resampling and mixed component set
-resampling.
-Given these resampling schemes, they undertake four experiments.
+\citet{wang2013data} was undertaken by \citet{wang2015data}, building more
+directly on the original work.
+This investigation made use of three different resampling schemes: standard
+resampling (as used in the original investigation), component sent resampling
+and mixed component set resampling.
+These different schemes were applied to a series of experiments for comparison.
 
 The first of these experiments seeks to address the use of component set
 resampling.
@@ -431,50 +379,41 @@ It was found that, when using standard resampling, the number of particles in
 the ensemble that matched with observations decreased as the number of agents
 increased; the use of mixed component resampling was found to reduce the rate at
 which this occurred.
-
-The second of the experiments aims to assess the effectiveness of the particle
-filter using the standard resampling scheme when simulating one agent.
-For this experiment, the agent was imparted with two different behaviours as in
-the original investigation.
-The effectiveness of the data assimilation scheme was assess by measuring the
-average distance per particle between the simulated agent and the real agent.
-It was once again found that the simulation error fell with each observation.
-Furthermore, it was noted that there were two situations that caused an increase
-in the simulation error:
-\begin{enumerate}
-    \item The agent turning back on itself in an area where no sensors are
-        present.
-    \item The agent approaches a 3-way intersection, where the agent is offered
-        discretely different option of direction in which to travel; the
-        particles, therefore, struggle to converge on the true state.
-\end{enumerate}
-
-The third experiment aims to asses the effectiveness of standard resampling when
-applying the scheme to a system containing two agents.
-This was achieved by comparing the average error per agent per particle for
-different numbers of particles (1200 particles, 1600 particles and 2000
-particles).
-It was found that as the number of particles increased, the simulation error
-decreased.
-
-The final experiment aimed to similarly assess the effectiveness mixed component set
-resampling for a system containing multiple agents, first starting with two
-agents.
-It was found that for each of the options for number of particles, the
-implementation of mixed component set resampling reduced the simulation error.
-Furthermore, when considering systems containing more agents (four or six), it
-was also found that the implementation of mixed component set resampling
-improved the simulation accuracy; however, as the number of agents in the system
-increased, this improvement reduced.
-This was attributed to situations when agents would crowd together, thus causing
-difficulties for the particles to distinguish different agents from binary
-sensors.
+Beyond the results observed previously, this investigation also found that:
+\begin{itemize}
+    \item Simulation error in a single agent system increased when an agent
+        turned back on itself in an area where no sensors were present.
+    \item Simulation error in a single-agent system increased when an agent
+        approached a 3-way intersection, offering it discretely different
+        options of direction in which to travel --- the particles struggled to
+        converge on the true state.
+    \item Both component set resampling and mixed component set resampling
+        improve on the accuracy gains provided by standard resampling for a
+        multi-agent system.
+    \item The improvements offered by mixed component set resampling over
+        standard resampling diminish as the number of agents increases; this was
+        attributed to situations when agents would crowd together, thus causing
+        difficulties for particles to distinguish different agents captured by
+        binary sensors.
+\end{itemize}
+Whilst this development appears promising, the issue of computational cost (both
+with respect to space and time) remain largely unaddressed.
+The investigation focuses on small agent populations ($\leq 6$), for which
+ensemble sizes greater than $1000$ are typically used to ensure that the
+application of data assimilation is worthwhile.
+This would lead to a large increase the cost of running such experiments, 
+When modelling more realistic systems, agent populations would likely be much
+larger, and consequently the number of particles required to improve accuracy
+would grow.
+This draws into question the tractability of such a method; it is likely that
+(at least one of) either HPC or multi-threading approaches would be required in
+such a situation.
 
 \subsubsection{Kalman Filter-based Approaches}\label{subs:lit_rev:da_abm:kf}
 
 Other investigations have sought to apply different data assimilation schemes
 including the Ensemble Kalman Filter.
-As shall be explained in Section \ref{ch:method}, the Ensemble Kalman Filter is an
+As shall be explained in Section \ref{sec:method}, the Ensemble Kalman Filter is an
 adaptation of the original Kalman Filter \citep{evensen2003ensemble}.
 This data assimilation technique was implemented in the investigation by
 \citet{ward2016dynamic}, which sought to expose agent based modelling
@@ -546,6 +485,10 @@ were not developed in the standard object-oriented framework typically used in
 agent-based modelling.
 The model used in the first experiment is a binary state model, with each agent
 either being in the city or not in the city.
+Such a model may be of use in gaining a picture of how the number of people in a
+city varies over time, but does not provide any additional information with
+regards to their spatial distribution within the city.
+
 The inter-agent interaction governing their transition between the two states is
 global --- this is to say that each agent's decisions are based on the state of
 every other agent without considering more intricate mechanisms of attraction
@@ -554,16 +497,15 @@ ones.
 Whilst the second experiment seeks to include a richer set of behaviours by
 further segmenting the agents, it still fails to include any spatial aspect,
 with agents again able to interact in a homogeneous fashion.
-In the case of each of the experiments, data assimilation is used to perform
-both state estimation and parameter estimation.
 
 Beyond this, it should be noted that the inclusion of parameter estimation,
 whilst not uncommon, is not a standard approach and so some attention should be
 given to the impact of its inclusion in the procedure.
+This may be achieved by undertaking the same investigation with and without
+parameter estimation, comparing the accuracy with which the data assimilation
+scheme models the state variable of interest.
 
 %\subsection{Other Approaches}\label{sub:lit_rev:da_abm:other}
-
-
 
 %Maritime piracy is posing a genuine threat to maritime transport.
 %The main purpose of simulation is to predict behaviours of many actual systems,
@@ -617,6 +559,28 @@ given to the impact of its inclusion in the procedure.
     %\item 
 %\end{itemize}
 
+\subsection{Cellular Automata}\label{sub:lit_rev:ca}
+
+Much like agent-based models, cellular automata are a simulation method which
+focus on prescribing behavioural rules at a microscopic scale and allowing the
+emergence of macroscopic behaviour.
+The two approaches differ, however, in that whilst agent-based models focus on
+agents as the discrete indivisible units, cellular automata focus on space as
+the units.
+In such a model, the environment is divided up into a collection of spatial
+cells, each of which has its own set of properties.
+As the model is iterated forward through time, the cell properties are then
+updated based on rules which typically rely on the properties of a cell's
+neighbours.
+Cellular automata are often implemented in research concerning land use.
+
+Whilst this dissertation focuses on the application of data assimilation methods
+to agent-based models, there also exists a body of work that makes use of the
+same methods in conjunction with cellular automata \citep{li2012assimilating,
+li2017exploring}.
+This may be of interest to those concerned more broadly with the development of
+real-time social simulation.
+
 \subsection{Summary}\label{sub:lit_rev:summary}
 
 %Drawing all of the information together.
@@ -655,13 +619,6 @@ time.
 This work therefore seeks to build upon the work by \citet{ward2016dynamic} in
 implementing an Ensemble Kalman Filter in conjunction with a agent-based
 pedestrian model.
-
-As an additional note, whilst this dissertation focuses on the application of
-data assimilation methods to agent-based models, there also exists a body of
-work that makes use of the same methods in conjunction with cellular automata
-\citep{li2012assimilating, li2017exploring}.
-This may be of interest to those concerned more broadly with the development of
-real-time social simulation.
 
 %Cellular automata can be thought of as a specific case of agent-based models in
 %which the environment is characterised by a discrete grid, with the occupancy of
