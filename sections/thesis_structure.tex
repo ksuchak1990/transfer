@@ -1,57 +1,170 @@
 \section{Thesis Structure}\label{sec:structure}
 
-Ideas for subsequent research:
+%Ideas for subsequent research:
+%\begin{itemize}
+    %\item Further exploration of EnKF:
+    %\begin{itemize}
+        %\item Varying levels of data coverage:
+        %\begin{itemize}
+            %\item Information on all agents vs some agents
+            %\item Aggregated sensor data vs individual coordinate data
+            %\item Varying level of agent attribute knowledge, e.g. do we know
+                %about agents' destination? If not do we attempt to fix this? If
+                %yes then how?
+        %\end{itemize}
+        %\item How does effectiveness vary with the level of non-linearity in the
+            %model?
+        %\item How do we measure the level of non-linearity?
+    %\end{itemize}
+    %\item Comparison of EnKF with other DA methods given the same model:
+    %\begin{itemize}
+        %\item PF, UKF
+        %\item Compare how effective they are
+        %\item Compare time complexity
+        %\item Compare space complexity
+    %\end{itemize}
+    %\item Application to a confined case study using real data:
+    %\begin{itemize}
+        %\item Headrow gateway pedestrian surveys
+        %\item Development of city square:
+        %\begin{itemize}
+            %\item Planning of sensor network deployment
+            %\item Use of DA both before and after developments
+            %\item What would be the point here?
+        %\end{itemize}
+    %\end{itemize}
+%\end{itemize}
+
+Given the aims and objectives outline in Section \ref{sub:intro:aims}, the
+following structure is proposed for the thesis.
+
+\paragraph{Introduction}
+
+This section will be based on Section \ref{sec:intro}, providing the background
+and rationale for the project, as well as outlining the main aims and objectives
+of the investigation.
+
+
+\paragraph{Literature Review}
+
+The foundations of this section will likely mirror Section \ref{sec:lit_rev},
+along with the addition of some coverage of:
 \begin{itemize}
-    \item Further exploration of EnKF:
-    \begin{itemize}
-        \item Varying levels of data coverage:
-        \begin{itemize}
-            \item Information on all agents vs some agents
-            \item Aggregated sensor data vs individual coordinate data
-            \item Varying level of agent attribute knowledge, e.g. do we know
-                about agents' destination? If not do we attempt to fix this? If
-                yes then how?
-        \end{itemize}
-        \item How does effectiveness vary with the level of non-linearity in the
-            model?
-        \item How do we measure the level of non-linearity?
-    \end{itemize}
-    \item Comparison of EnKF with other DA methods given the same model:
-    \begin{itemize}
-        \item PF, UKF
-        \item Compare how effective they are
-        \item Compare time complexity
-        \item Compare space complexity
-    \end{itemize}
-    \item Application to a confined case study using real data:
-    \begin{itemize}
-        \item Headrow gateway pedestrian surveys
-        \item Development of city square:
-        \begin{itemize}
-            \item Planning of sensor network deployment
-            \item Use of DA both before and after developments
-            \item What would be the point here?
-        \end{itemize}
-    \end{itemize}
+    \item The use of data assimilation schemes in conjunction with
+        agent-based models in contexts other than social simulation,
+    \item The use of methods other than data assimilation for real-time
+        pedestrian modelling (as well as a comparison between such
+        approaches and data assimilation methods),
 \end{itemize}
 
-Given the work undertaken thus far (as outlined in Section \ref{sec:results}),
-there are a number of avenues along which future work may proceed.
-The first and most pressing avenue would be to further explore and develop the
-implementation of the Ensemble Kalman Filter for Agent-Based Models.
-Beyond this, in light of the parallel development of other data assimilation
-methods for agent-based models, a comparison of the Ensemble Kalman Filter with
-other methods should be pursued.
-Finally, the data assimilation scheme may be applied to a case-study scenario in
-order to show it's efficacy in working with real-world environments and data;
-such a piece of work would....
-Each of these avenues will be elaborated upon in the subsequent subsections.
+\paragraph{Methodology}
 
-\subsection{Further Exploration of the Ensemble Kalman
-Filter}\label{sub:timetable:further}
+This will be based on Section \ref{sec:method}, seeking to outline data
+assimilation and how it works, and will be expanded to include any other data
+assimilation schemes that I go on to use.
 
-\subsection{Comparison with other Data Assimilation
-Methods}\label{sub:timetable:comparison}
+\paragraph{Exploring the Ensemble Kalman Filter with a simple ABM}
 
-\subsection{Application to a Case Study}\label{sub:timetable:application}
+This section will be based upon the work presented in Section
+\ref{sec:research}, expanding upon it by further exploring the impact of varying
+levels of data coverage (knowledge of all agent locations vs knowledge of a
+subset of agent location) and varying levels of data aggregation (knowledge of
+individual agent locations vs knowledge of number of agents in a given area).
+This part of the investigation would seek to understand how the different
+factors impact the performance of the Ensemble Kalman Filter.
+Furthermore, the hope is that this would act as a proof-of-concept.
+
+\paragraph{Comparison of the Ensemble Kalman Filter with Different Models}
+
+The research undertaken thus far has focused on implementing the Ensemble Kalman
+Filter for a relatively simple agent-based model --- in many of the scenarios
+for this model, agent motion is linear and deterministic.
+There are likely many scenarios for which this is not the case.
+This section would therefore seek to apply the Ensemble Kalman Filter to
+different models of pedestrian motion with a view to understanding what facets
+of pedestrian motion the method struggles to capture.
+
+\paragraph{Comparison of Different Data Assimilation Methods}
+
+At present, this work has focused on the use of the Ensemble Kalman Filter in
+conjunction with agent-based models.
+There exist, however, a number of other data assimilation methods --- some of
+which are being actively applied to the same model.
+This part of the investigation would seek to compare the different methods with
+regards to effectiveness in improving simulation accuracy, time complexity and
+space complexity.
+
+\paragraph{Conclusion}
+
+This section will draw together the research results, discussing them and how
+they pertain to the aims and objectives and the literature review.
+
+\subsection*{Case Studies}\label{sub:structure:case_studies}
+
+Beyond this, there is also scope for work on case studies with Leeds City
+Council (who are the industrial partner for this project).
+Discussions regarding such case studies are ongoing, and may pertain to either
+of the following:
+\begin{itemize}
+    \item \textbf{Pedestrian Motion on Briggate}: The previous work that has
+        been undertaken to apply the Ensemble Kalman Filter to pedestrian
+        agent-based models has focused on Briggate. 
+    \item \textbf{Renovation of Leeds Station}: The renovation of Leeds Station
+        is presently ongoing. There are also plans for the redevelopment of
+        parts of Leeds City Square. Members of Leeds City Council are therefore
+        interested in understanding the impact of such changes, and exploring
+        how the different potential layouts of Leeds City Square will affect the
+        flow of pedestrians.
+    \item \textbf{Redevelopment of the Headrow}: The redevelopment of the
+        Headrow has recently begun whereby Leeds City Council seek to remove the
+        central partition in the road with a view to easing the flow of public
+        transport, better providing for cyclists, and widening pedestrian
+        walkways and offering more green-space.
+\end{itemize}
+
+\subsection*{PhD by Publication}\label{sub:structure:publication}
+
+The structure outlined above pertains to the traditional format of `PhD by
+Thesis'.
+An alternative to this would be to pursue the `PhD by Publication' route, in
+which the final submission would comprise of a series of papers along with and
+introductory section and a conclusion section.
+The benefits of such an approach would be that it would require that less time
+was set aside at the end of the PhD dedicated solely to writing the thesis, and
+ensuring that research is published and disseminated early in the career.
+The risk of this approach is that it requires that the student has one paper
+published, one in review and one ready to submit by the end of the PhD ---
+papers should therefore be submitted well in advance to account for time taken
+on corrections and alterations.
+If this research were to follow such an approach, the following section may be
+candidates for publication:
+\begin{itemize}
+    \item Exploring the Ensemble Kalman Filter with a simple ABM
+    \item Comparison of the Ensemble Kalman Filter with Different Models
+    \item Comparison of Different Data Assimilation Methods
+\end{itemize}
+
+The section of the methodology pertaining to the Ensemble Kalman Filter would be
+covered in the first publication, with any subsequent data assimilation methods
+being covered in the last publication.
+
+%Given the work undertaken thus far (as outlined in Section \ref{sec:results}),
+%there are a number of avenues along which future work may proceed.
+%The first and most pressing avenue would be to further explore and develop the
+%implementation of the Ensemble Kalman Filter for Agent-Based Models.
+%Beyond this, in light of the parallel development of other data assimilation
+%methods for agent-based models, a comparison of the Ensemble Kalman Filter with
+%other methods should be pursued.
+%Finally, the data assimilation scheme may be applied to a case-study scenario in
+%order to show it's efficacy in working with real-world environments and data;
+%such a piece of work would....
+%Each of these avenues will be elaborated upon in the subsequent subsections.
+
+%\subsection{Further Exploration of the Ensemble Kalman
+%Filter}\label{sub:timetable:further}
+
+%\subsection{Comparison with other Data Assimilation
+%Methods}\label{sub:timetable:comparison}
+
+%\subsection{Application to a Case Study}\label{sub:timetable:application}
 
