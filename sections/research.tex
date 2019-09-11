@@ -47,61 +47,6 @@ Faster agents attempt to pass slower agents, at times getting stuck behind them
 --- this can be observed in the trails show in Figure \ref{fig:sample_model_run}
 at $(x, y) \approx (65, 55)$.
 
-%\begin{figure}[h]
-    %\centering
-    %\includegraphics[width=\textwidth]{sample_model_run.eps}
-    %\caption{Example run of StationSim for 20 agents; agents enter environment
-    %through entrances on left and leave through exits on right.}
-    %\label{fig:sample_model_run}
-%\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{sample_model_run.eps}
-    \caption{Sample model run}\label{fig:sample_model_run}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{step.eps}
-    \caption{Flow diagram of agent step behaviour. Activation and deactivation
-        behaviours are defined in Figure \ref{fig:act_deact}; movement behaviour
-    is defined in Figure \ref{fig:move}}\label{fig:step}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}[h]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{activate.eps}
-        \caption{Activation}\label{fig:act_deact:act}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[h]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{deactivate.eps}
-        \caption{Deactivation}\label{fig:act_deact:deact}
-    \end{subfigure}
-    \caption{Flow diagrams of agent behaviours for activation and deactivation}
-    \label{fig:act_deact}
-\end{figure}
-
-%\begin{figure}[h]
-    %\centering
-    %\includegraphics[width=0.5\textwidth]{activate.eps}
-    %\caption{Flow diagram of agent step behaviour}
-%\end{figure}
-
-%\begin{figure}[h]
-    %\centering
-    %\includegraphics[width=0.5\textwidth]{deactivate.eps}
-    %\caption{Flow diagram of agent step behaviour}
-%\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{move.eps}
-    \caption{Flow diagram of agent movement behaviour}\label{fig:move}
-\end{figure}
-
 \subsection{Experimental Setup}\label{sub:method:experiments}
 
 With the above model in mind, a set of experiments were designed in order to
@@ -213,4 +158,59 @@ which assimilation takes place.
 It should be noted that this section adopts the common terminology of
 ``forecast'' to mean the state predicted by the model before updating, and
 ``analysis'' to mean the state after updating.
+
+%\begin{figure}[h]
+    %\centering
+    %\includegraphics[width=\textwidth]{sample_model_run.eps}
+    %\caption{Example run of StationSim for 20 agents; agents enter environment
+    %through entrances on left and leave through exits on right.}
+    %\label{fig:sample_model_run}
+%\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{sample_model_run.eps}
+    \caption{Sample model run}\label{fig:sample_model_run}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{step.eps}
+    \caption{Flow diagram of agent step behaviour. Activation and deactivation
+        behaviours are defined in Figure \ref{fig:act_deact}; movement behaviour
+    is defined in Figure \ref{fig:move}}\label{fig:step}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[h]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{activate.eps}
+        \caption{Activation}\label{fig:act_deact:act}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[h]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{deactivate.eps}
+        \caption{Deactivation}\label{fig:act_deact:deact}
+    \end{subfigure}
+    \caption{Flow diagrams of agent behaviours for activation and deactivation}
+    \label{fig:act_deact}
+\end{figure}
+
+%\begin{figure}[h]
+    %\centering
+    %\includegraphics[width=0.5\textwidth]{activate.eps}
+    %\caption{Flow diagram of agent step behaviour}
+%\end{figure}
+
+%\begin{figure}[h]
+    %\centering
+    %\includegraphics[width=0.5\textwidth]{deactivate.eps}
+    %\caption{Flow diagram of agent step behaviour}
+%\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{move.eps}
+    \caption{Flow diagram of agent movement behaviour}\label{fig:move}
+\end{figure}
 
