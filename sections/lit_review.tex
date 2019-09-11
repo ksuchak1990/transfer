@@ -1,16 +1,16 @@
 \section{Literature Review}\label{sec:lit_rev}
 
-\begin{itemize}
-    %\item Introduction to agent-based modelling
-    \item Review of methods for real-time model updating
-    \begin{itemize}
-        \item Data assimilation
-        \item Others
-    \end{itemize}
-    \item Talk about application to cellular automata too.
-    \item Whereas agent-based models focus on agents as the discrete indivisible
-        units, cellular automata focus on space as the units.
-\end{itemize}
+%\begin{itemize}
+    %%\item Introduction to agent-based modelling
+    %\item Review of methods for real-time model updating
+    %\begin{itemize}
+        %\item Data assimilation
+        %\item Others
+    %\end{itemize}
+    %\item Talk about application to cellular automata too.
+    %\item Whereas agent-based models focus on agents as the discrete indivisible
+        %units, cellular automata focus on space as the units.
+%\end{itemize}
 
 As touched upon in Section \ref{sec:intro}, the process of developing an
 agent-based model typically involves some form of model calibration.
@@ -41,14 +41,13 @@ to the application of data assimilation methods to the related modelling
 technique of cellular automata.
 Consequently, the section shall proceed as follows:
 \begin{itemize}
-    \item An introductory review of agent-based modelling, and its relation to
-        cellular automata.
+    \item An introductory review of agent-based modelling
     \item A basic overview of data assimilation.
     \item A review of the attempts that have been made to implement data
         assimilation techniques to agent-based models and cellular automata.
 \end{itemize}
 
-\subsection{Agent-Based Modelling}\label{sub:abms}
+\subsection{Agent-Based Modelling}\label{sub:lt:abm}
 
 Agent-based models (sometimes referred to as individual-based models), have
 become widely used in a range of fields including social systems (e.g.\ the
@@ -105,6 +104,80 @@ Failure to correctly capture the underlying agent behaviours can result in
 spurious behaviours that do not match those observed in the real system
 \citep{couclelis2002modeling}.
 
+\subsubsection*{Calibration of Agent-Based Models}\label{subs:abm:calibration}
+
+The process of calibrating an agent-based model involves identifying the values
+that should be assigned to model parameters in order to achieve the expected
+system behaviour.
+Such parameters govern the ways in which agent interact with each other and with
+their surrounding environment --- it is therefore crucial that correct values be
+identified.
+In some cases, it is not possible to calculate unique values for parameters, and
+we instead are left with parameter sets, i.e.\ multiple combinations of
+parameters that can be used to reproduce the desired behaviour; this can result
+from over-paramerisation or correlation and interaction between parameters
+\citep{gan2014comprehensive}.
+The process of model calibration may also be further impeded by either a lack of
+data or data with high uncertainty \citep{thiele2014facilitating}.
+
+Associated with the process of model calibration is the procedure of sensitivity
+analysis.
+This process involves gaining an understanding of how sensitive a model is to
+perturbations in parameter values \citep{kleijnen1995sensitivity}.
+
+The remainder of this section will now go on provide a very brief overview of
+some of the available calibration methods; a more exhaustive review can be found
+in \cite{thiele2014facilitating}.
+
+\paragraph{Full Factorial Design}
+
+The most primitive method of model calibration is known as full factorial
+design, whereby a comprehensive parameter search is undertaken by running the
+model for every combination of parameter values \citep{thiele2014facilitating},
+evaluating for each run the outputs of the model against the desired behaviour.
+This method is appropriate when model runs are relatively inexpensive with
+regards to compute time, and when parameters take integer values; in cases where
+parameters take on non-integer values, care must be taken with regards to the
+grid resolution of the parameters that are tested as this may significantly
+change results.
+
+\paragraph{Classical Sampling Methods}
+
+Instead of the exhaustive search proposed in the form of Full Factorial Design,
+Classical Sampling Methods involve sampling from the set of potential parameter
+combinations.
+In its most simple form, this would take the form of randomly sampling from
+uniform distributions for each parameter value; however, this is ultimately very
+inefficient.
+Other sampling methods have therefore been developed.
+
+\paragraph{Optimisation Methods}
+
+Optimisation Methods are a common technique for fitting models.
+They involve defining a cost function relating some aspect of model behaviour
+with the corresponding aspect of the observed phenomenon; we then seek to
+minimise the difference (i.e.\ the cost).
+These approaches can therefore be viewed as minimisation problems over the
+parameter space in which we often seek the global minimum.
+Many techniques exist to achieve this goal, including simulated annealing (from
+statistical physics) \citep{kirkpatrick1983optimization} and evolutionary
+algorithms \citep{duboz2010application}.
+
+\paragraph{Bayesian Methods}
+
+Bayesian Methods seek to make use of Bayes theorem (outlined in Section
+\ref{sub:lit_rev:da}) to identify appropriate parameter values
+\citep{jabot2013easy}.
+This is achieved by making use of our prior understanding of the statistical
+distributions from which each of the parameter values are drawn; running a model
+a large number of times with parameter values drawn from these distributions,
+comparing our resulting model outputs with our observations with a view to
+inferring the true statistical distributions of the parameters.
+Due to the large number of times that models must be run, these methods can be
+computationally expensive; however, with the increasing levels of computational
+power available to researchers, they are gaining popularity
+\citep{van2015calibration, beaumont2010approximate}.
+
 \subsection{Data Assimilation}\label{sub:lit_rev:da}
 
 %\begin{itemize}
@@ -123,8 +196,7 @@ Such a process can be achieved through a Bayesian filtering approach
 \citep{jazwinski1970mathematics, bar2004estimation}.
 
 Under such a framework, the updating of the model state is undertaken on the
-basis of Bayes Rule (for which a derivation is provided in Appendix
-\ref{ch:bayes_rule}):
+basis of Bayes Rule:
 \begin{equation}
     P(A|B) = \frac{P(B|A) P(A)}{P(B)}
 \end{equation}
@@ -401,7 +473,7 @@ with respect to space and time) remain largely unaddressed.
 The investigation focuses on small agent populations ($\leq 6$), for which
 ensemble sizes greater than $1000$ are typically used to ensure that the
 application of data assimilation is worthwhile.
-This would lead to a large increase the cost of running such experiments, 
+This would lead to a large increase in the cost of running such experiments. 
 When modelling more realistic systems, agent populations would likely be much
 larger, and consequently the number of particles required to improve accuracy
 would grow.
@@ -572,12 +644,16 @@ cells, each of which has its own set of properties.
 As the model is iterated forward through time, the cell properties are then
 updated based on rules which typically rely on the properties of a cell's
 neighbours.
-Cellular automata are often implemented in research concerning land use.
+Cellular automata are often implemented in research concerning land use, in
+which it is common to discretise space.
 
 Whilst this dissertation focuses on the application of data assimilation methods
-to agent-based models, there also exists a body of work that makes use of the
-same methods in conjunction with cellular automata \citep{li2012assimilating,
-li2017exploring}.
+to agent-based models, there also exists a body of literature in which
+researchers make use of the same methods in conjunction with cellular automata.
+Specifically considering research undertaken regarding urban land use,
+investigations have been undertaken using both the Ensemble Kalman Filter
+\citep{li2017exploring, zhang2011model, zhang2013urban} and the Particle Filter
+\citep{verstegen2014identifying} 
 This may be of interest to those concerned more broadly with the development of
 real-time social simulation.
 
