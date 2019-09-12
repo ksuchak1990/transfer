@@ -105,6 +105,41 @@ where by they choose to move up or down (in the $y$-direction) in an attempt to
 pass the obstruction in front of them; the decision to move either up or down is
 made randomly with each choice carrying an equal probability.
 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{sample_model_run.eps}
+    \caption{Sample model run.}\label{fig:sample_model_run}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{step.eps}
+    \caption{Flow diagram of agent step behaviour. Activation and deactivation
+        behaviours are defined in Figure \ref{fig:act_deact}; movement behaviour
+    is defined in Figure \ref{fig:move}.}\label{fig:step}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[h]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{activate.eps}
+        \caption{Activation}\label{fig:act_deact:act}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[h]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{deactivate.eps}
+        \caption{Deactivation}\label{fig:act_deact:deact}
+    \end{subfigure}
+    \caption{Flow diagrams of agent behaviours for activation and deactivation.}
+    \label{fig:act_deact}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{move.eps}
+    \caption{Flow diagram of agent movement behaviour.}\label{fig:move}
+\end{figure}
+
 \subsection{Experimental Setup}\label{sub:research:experiments}
 
 With the above model in mind, a set of experiments were designed.
@@ -209,6 +244,62 @@ ground truth.
 It is expected that increasing the filter ensemble size will reduce this impact,
 as should reducing the assimilation period.
 
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{@{}ll@{}}
+        \toprule
+        Variable                       & Value                         \\ \midrule
+        Number of iterations           & 300                           \\
+        Assimilation period            & 50                            \\
+        Ensemble size                  & 10                            \\
+        Observation standard deviation & 1.0                           \\ \bottomrule
+    \end{tabular}
+    \caption{Table of filter parameters for experiments
+    1 and 2.}\label{tab:filter_params_12}
+\end{table}
+
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{@{}ll@{}}
+    \toprule
+        Variable            & Value                 \\ \midrule
+        Population size     & 20                    \\
+        Number of entrances & 3                     \\
+        Number of exits     & 2                     \\
+        Environment height  & 100                   \\
+        Environment width   & 200                   \\ \bottomrule
+    \end{tabular}
+    \caption{Table of model parameters for experiments
+    1 and 2.}\label{tab:model_params_12}
+\end{table}
+
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{@{}ll@{}}
+        \toprule
+        Variable                       & Value                         \\ \midrule
+        Number of iterations           & 300                           \\
+        Assimilation period            & $[2, 5, 10, 20, 50]$          \\
+        Ensemble size                  & $[2, 5, 10, 20, 50]$          \\
+        Observation standard deviation & $[0.5, 1.0, 1.5, 2.0, 2.5]$   \\ \bottomrule
+    \end{tabular}
+    \caption{Table of filter parameters for experiments.}\label{tab:filter_params}
+\end{table}
+
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{@{}ll@{}}
+    \toprule
+        Variable            & Value                 \\ \midrule
+        Population size     & $[5, 10, 15, 20, 25$] \\
+        Number of entrances & 3                     \\
+        Number of exits     & 2                     \\
+        Environment height  & 100                   \\
+        Environment width   & 200                   \\ \bottomrule
+    \end{tabular}
+    \caption{Table of model parameters for experiment.}\label{tab:model_params}
+\end{table}
+
 \subsection{Results}\label{sub:research:results}
 
 \paragraph{Experiment 1: Confirming that Ensemble Kalman Filter is effective}
@@ -249,137 +340,6 @@ improving the accuracy with which the model can simulate the system.
 To ensure that this result is not restricted to the individual agent, the next
 experiment will go on to average the errors over the whole agent population.
 
-\paragraph{Experiment 2: Exploring evolution of errors over time}
-
-This experiment seeks to consider the variations in error over time.
-In particular Figure \ref{fig:error_evolution} consists of three sub-plot, in
-each case showing the evolution of average error per agent over time.
-The experiment is run for 10 realisations, each time using the same model and
-filter parameters.
-Each dashed line in Figure \ref{fig:error_evolution} is indicative of a single
-realisation, whilst the solid line is the average over all realisations.
-
-
-\paragraph{Experiment 3: Exploring the impact of filter parameters}
-
-Figure \ref{fig:es_heatmap}, \ref{fig:ap_heatmap}, \ref{fig:std_heatmap}
-
-\subsection{Conclusion}\label{sub:research:conclusion}
-
-This is ok, but we've got some issues
-
-\newpage
-\begin{table}[h]
-    \centering
-    \begin{tabular}{@{}ll@{}}
-        \toprule
-        Variable                       & Value                         \\ \midrule
-        Number of iterations           & 300                           \\
-        Assimilation period            & 50                            \\
-        Ensemble size                  & 10                            \\
-        Observation standard deviation & 1.0                           \\ \bottomrule
-    \end{tabular}
-    \caption{Table of filter parameters for experiments
-    1 and 2.}\label{tab:filter_params_12}
-\end{table}
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{@{}ll@{}}
-    \toprule
-        Variable            & Value                 \\ \midrule
-        Population size     & 20                    \\
-        Number of entrances & 3                     \\
-        Number of exits     & 2                     \\
-        Environment height  & 100                   \\
-        Environment width   & 200                   \\ \bottomrule
-    \end{tabular}
-    \caption{Table of model parameters for experiments
-    1 and 2.}\label{tab:model_params_12}
-\end{table}
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{@{}ll@{}}
-        \toprule
-        Variable                       & Value                         \\ \midrule
-        Number of iterations           & 300                           \\
-        Assimilation period            & $[2, 5, 10, 20, 50]$          \\
-        Ensemble size                  & $[2, 5, 10, 20, 50]$          \\
-        Observation standard deviation & $[0.5, 1.0, 1.5, 2.0, 2.5]$   \\ \bottomrule
-    \end{tabular}
-    \caption{Table of filter parameters for experiments.}\label{tab:filter_params}
-\end{table}
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{@{}ll@{}}
-    \toprule
-        Variable            & Value                 \\ \midrule
-        Population size     & $[5, 10, 15, 20, 25$] \\
-        Number of entrances & 3                     \\
-        Number of exits     & 2                     \\
-        Environment height  & 100                   \\
-        Environment width   & 200                   \\ \bottomrule
-    \end{tabular}
-    \caption{Table of model parameters for experiment.}\label{tab:model_params}
-\end{table}
-
-%\begin{figure}[h]
-    %\centering
-    %\includegraphics[width=\textwidth]{sample_model_run.eps}
-    %\caption{Example run of StationSim for 20 agents; agents enter environment
-    %through entrances on left and leave through exits on right.}
-    %\label{fig:sample_model_run}
-%\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.8\textwidth]{sample_model_run.eps}
-    \caption{Sample model run.}\label{fig:sample_model_run}
-\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.8\textwidth]{step.eps}
-    \caption{Flow diagram of agent step behaviour. Activation and deactivation
-        behaviours are defined in Figure \ref{fig:act_deact}; movement behaviour
-    is defined in Figure \ref{fig:move}.}\label{fig:step}
-\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \begin{subfigure}[h]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{activate.eps}
-        \caption{Activation}\label{fig:act_deact:act}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[h]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{deactivate.eps}
-        \caption{Deactivation}\label{fig:act_deact:deact}
-    \end{subfigure}
-    \caption{Flow diagrams of agent behaviours for activation and deactivation.}
-    \label{fig:act_deact}
-\end{figure}
-
-%\begin{figure}[h]
-    %\centering
-    %\includegraphics[width=0.5\textwidth]{activate.eps}
-    %\caption{Flow diagram of agent step behaviour}
-%\end{figure}
-
-%\begin{figure}[h]
-    %\centering
-    %\includegraphics[width=0.5\textwidth]{deactivate.eps}
-    %\caption{Flow diagram of agent step behaviour}
-%\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.8\textwidth]{move.eps}
-    \caption{Flow diagram of agent movement behaviour.}\label{fig:move}
-\end{figure}
-
 \begin{figure}[!htb]
     \centering
     \begin{subfigure}[h]{\textwidth}
@@ -396,7 +356,45 @@ This is ok, but we've got some issues
     \label{fig:250_single}
 \end{figure}
 
-\begin{figure}[!htb]
+\paragraph{Experiment 2: Exploring evolution of errors over time}
+
+This experiment seeks to consider the variations in error over time.
+In particular Figure \ref{fig:error_evolution} consists of three sub-plot, in
+each case showing the evolution of average error per agent over time.
+The experiment is run for 10 realisations, each time using the same model and
+filter parameters.
+Each dashed line in Figure \ref{fig:error_evolution} is indicative of a single
+realisation, whilst the solid line is the average over all realisations.
+
+Trivially, it can be observed that the average observation error remains
+approximately constant over all model time, with very little variation between
+different realisations.
+This is reflective of the standard deviation of the normally distributed random
+noise that was added to the ground truth in order to produce the observations.
+Beyond this, it can also be seen that the forecast and analysis error at the
+very beginning of model time are negligible.
+This is a consequence of how the ensemble of models is constructed; the ensemble
+members are constructed by taking deep-copies of the model which produces the
+ground truth and therefore at $t=0$ the agents in each of the models is exactly
+the same as in the ground truth model.
+
+As model time progresses, and we approach $t=50$ (i.e. the first assimilaton
+point), we observe that the mean forecast error has grown to appoximately $2.2$.
+This is likely a result of many of the agents entering the system over the first
+$50$ time-steps, likely resulting in some crowding.
+The application of the assimilation process results in a reduction in the mean
+error, as seen through the comparison of the mean forecast error and mean
+analysis error at $t=50$.
+The same can be seen at each of the subsequent assimilation points, with the
+mean analysis error being lower than the mean forecast error each time.
+
+It is noticeable that there is variation between individual realisations.
+In the worst-case scenario, i.e.\ the uppermost dashed lines for both the
+forecast and the analysis, it can be seen that the mean analysis error is
+approximately as good as the mean forecast error if not better for the majority
+of assimilation points.
+
+\begin{figure}[!hp]
     \centering
     \includegraphics[width=\textwidth]{all_results.pdf}
     \caption{Evolution of forecast error, analysis error and observation error
@@ -404,21 +402,110 @@ This is ok, but we've got some issues
 realisations.}\label{fig:error_evolution}
 \end{figure}
 
-\begin{figure}[!htb]
+\paragraph{Experiment 3: Exploring the impact of filter parameters}
+
+This experiment seeks to explore the impact on analysis error of variations in
+filter parameters, and how this behaviour changes over different population
+sizes.
+This information is captured in Figures \ref{fig:es_heatmap},
+\ref{fig:ap_heatmap}, \ref{fig:std_heatmap}.
+These figures remove the temporal component seen in the previous experiment from
+the analysis, averaging over each of the assimilation points.
+In the case of each of the figures, darker shades indicate higher mean analysis
+error, whilst lighter shades indicate lower mean analysis error.
+
+Considering first Figure \ref{fig:es_heatmap}, it can be seen that as population
+size increases so does the mean analysis error.
+This is expected --- an increase in the model population size results in more
+crowding and therefore the introduction of more random decisions made by agents.
+Conversely, a reduction in the model population size leads to few stochastic
+elements being introduced, resulting in the model becoming more linear and
+deterministic.
+Beyond this, it can be seen that as ensemble size increases, mean analysis error
+decreases.
+Once again, this is expected --- as the ensemble size becomes infinitely large,
+the Ensemble Kalman Filter is expected to converge on the original Kalman
+Filter, providing the optimum solution for the Bayesian updating problem of
+estimating the posterior (i.e.\ analysis) model state.
+
+Considering Figure \ref{fig:ap_heatmap}, it can once again be seen that as
+population size increases, so does the mean analysis error.
+The figure also suggests that as assimilation period increases, there may be a
+slight reduction in mean analysis error.
+This is contrary to expectation --- it was expected that a lower assimilation
+period would result in improvements in mean analysis error as more frequently
+assimilating observations into the model would help to keep the ensemble members
+closer to the ground truth.
+It it worth noting, however, that the trend with respect to assimilation period
+only appears to be slight and appears to fade as the population size increases.
+This phenomenon may warrant further exploration with a greater number of
+realisations.
+
+Considering Figure \ref{fig:std_heatmap}, it can once again be seen that as
+population size increases, so does thee mean analysis error.
+The figure also suggests that as the standard deviation of the measurement error
+decreases, the mean analysis error also decreases.
+This highlights the value of high fidelity observations.
+With lower uncertainty observations, the Kalman gain matrix places a greater
+weighting on the perturbation to the model state provided by the observed data.
+
+\begin{figure}[!hp]
     \centering
     \includegraphics[width=0.8\textwidth]{ensemble_size_population_size.pdf}
-    \caption{ES heatmapt}\label{fig:es_heatmap}
+    \caption{Variation of mean analysis error with filter ensemble size and
+        model population size; fixed assimilation period (20), fixed measurement
+    error standard deviation (1.5).}\label{fig:es_heatmap}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[!hp]
     \centering
     \includegraphics[width=0.8\textwidth]{assimilation_period_population_size.pdf}
-    \caption{AP heatmap}\label{fig:ap_heatmap}
+    \caption{Variation of mean analysis error with filter assimilation period
+        and model population size; fixed ensemble size (20), fixed measurement
+    error standard deviation (1.5).}\label{fig:ap_heatmap}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[!hp]
     \centering
     \includegraphics[width=0.8\textwidth]{std_population_size.pdf}
-    \caption{STD heatmap}\label{fig:std_heatmap}
+    \caption{Variation of mean analysis error with measurement error standard
+        deviation and model population size; fixed ensemble size (20), fixed
+    assimilation period (20).}\label{fig:std_heatmap}
 \end{figure}
 
+\subsection{Conclusion}\label{sub:research:conclusion}
+
+The work presented in this section aims to form the basis of the remaining PhD
+research.
+It has involved the development of an Ensemble Kalman Filter for implementation
+in conjunction with agent-based model.
+Preliminary experiments have shown the filter to be effective in improving the
+accuracy with which the provided agent-based model can model pedestrian motion.
+It has also been shown that, as expected, an increase in ensemble size has
+resulted in improved filter performance.
+There remain, however, a number of avenues that require further investigation;
+these include a further exploration of the impact of varying assimilation period
+on filter performance, as well as the objectives outlined in Section
+\ref{sec:structure}.
+
+%\begin{figure}[h]
+    %\centering
+    %\includegraphics[width=\textwidth]{sample_model_run.eps}
+    %\caption{Example run of StationSim for 20 agents; agents enter environment
+    %through entrances on left and leave through exits on right.}
+    %\label{fig:sample_model_run}
+%\end{figure}
+
+%\begin{figure}[h]
+    %\centering
+    %\includegraphics[width=0.5\textwidth]{activate.eps}
+    %\caption{Flow diagram of agent step behaviour}
+%\end{figure}
+
+%\begin{figure}[h]
+    %\centering
+    %\includegraphics[width=0.5\textwidth]{deactivate.eps}
+    %\caption{Flow diagram of agent step behaviour}
+%\end{figure}
+
+\newpage
