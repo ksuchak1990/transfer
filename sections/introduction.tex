@@ -1,11 +1,11 @@
 \section{Introduction}\label{sec:intro}
 
-\begin{itemize}
-    \item What am I doing?
-    \item Why am I doing it?
-    \item How have people done it in the past?
-    \item How do I plan to do it?
-\end{itemize}
+%\begin{itemize}
+    %\item What am I doing?
+    %\item Why am I doing it?
+    %\item How have people done it in the past?
+    %\item How do I plan to do it?
+%\end{itemize}
 
 A better understanding of how people move around their environment is of great
 utility to both academics and policy-makers.
@@ -108,27 +108,54 @@ two-dimensional station from one side to the other.
 
 \subsection{Aims and Objectives}\label{sub:intro:aims}
 
-Ultimately, the hope is that this work will feed into the work undertaken at
-Leeds City Council to help with a data-driven decision making process.
-As local governments collect greater volumes of data at increasing frequency, 
-
-With the above in mind, this dissertation aims to determine whether the Ensemble
-Kalman Filter method of data assimilation can be used to improve the accuracy
-with which an Agent-Based Model simulates pedestrian movements given synthetic
-real-time data.
-In order to achieve this, the following objectives are set out:
+With the above in mind, this PhD research project aims to assess whether the
+Ensemble Kalman Filter method of data assimilation can be used to improve the
+accuracy with which an agent-based model can simulate pedestrian movements
+within urban environments.
+This will contribute to a young and emerging area of research which seeks to
+model social systems at close to real-time.
+Ultimately, the hope is that success in this research will feed into the work
+undertaken at Leeds City Council (with whom this project is partnered) to help
+with data-driven decision making processes.
+In order to achieve this, the following research objectives are set out:
 \begin{enumerate}
-    \item Develop a general Ensemble Kalman Filter computational class.
-    \item Apply the Ensemble Kalman Filter to the pedestrian model.
-    \item Compare the accuracy with which the Ensemble Kalman Filter
-        implementation of the model simulates the pedestrian movement against
-        the based model without data assimilation.
+    \item Develop an implementation of the Ensemble Kalman Filter for
+        implementation with agent-based models of pedestrian movement.
+    \item Evaluate the impact of filter parameters on the data assimilation
+        method when implemented with an agent-based model.
+    \item Evaluate the impact of varying levels of observational information
+        being provided to the filtering technique.
+    \item Explore the how varying model and agent behaviours impact filter
+        performance.
+    \item Compare the performance of the Ensemble Kalman Filter with other
+        techniques for updating agent-based models of pedestrian motion.
 \end{enumerate}
 
-The remainder of this dissertation will provide an overview of some of the work
-that has been undertaken thus far on implementing data assimilation schemes with
-agent based models (Chapter \ref{sec:lit_rev}), elaborate on how data
-assimilation works --- particularly focussing on the aforementioned Ensemble Kalman
-Filter (Chapter \ref{sec:method}) --- and examine the effectiveness of this
-method in improving the accuracy of the agent-based model (Chapter
-\ref{sec:results}).
+The remainder of this report will provide the basis for approaching the above
+objectives.
+This includes outlining a proposal for the structure of the final PhD Thesis in
+Section \ref{sec:structure}, reviewing existing literature in the research field
+in Section \ref{sec:lit_rev} and providing an overview of the data assimilation
+method around which this work centres --- the Ensemble Kalman Filter --- in
+Section \ref{sec:method}.
+The report will then go on to cover the research that has been performed so far
+in Section \ref{sec:research}, before closing with a timetable for the remaining
+two years of the PhD and a training review in Section \ref{sec:timetable} and
+\ref{sec:training} respectively.
+
+%In order to achieve this, the following objectives are set out:
+%\begin{enumerate}
+    %\item Develop a general Ensemble Kalman Filter computational class.
+    %\item Apply the Ensemble Kalman Filter to the pedestrian model.
+    %\item Compare the accuracy with which the Ensemble Kalman Filter
+        %implementation of the model simulates the pedestrian movement against
+        %the based model without data assimilation.
+%\end{enumerate}
+
+%The remainder of this dissertation will provide an overview of some of the work
+%that has been undertaken thus far on implementing data assimilation schemes with
+%agent based models (Chapter \ref{sec:lit_rev}), elaborate on how data
+%assimilation works --- particularly focussing on the aforementioned Ensemble Kalman
+%Filter (Chapter \ref{sec:method}) --- and examine the effectiveness of this
+%method in improving the accuracy of the agent-based model (Chapter
+%\ref{sec:research}).
